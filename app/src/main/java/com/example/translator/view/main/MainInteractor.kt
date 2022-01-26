@@ -1,32 +1,24 @@
 package com.example.translator.view.main
 
-
-import android.util.Log
+import com.example.translator.di.NAME_LOCAL
+import com.example.translator.di.NAME_REMOTE
+import com.example.translator.model.data.AppState
 import com.example.translator.model.data.DataModel
-import com.example.translator.model.data.SearchResult
 import com.example.translator.model.repository.Repository
-import com.example.translator.presenter.Interactor
+import com.example.translator.viewmodel.Interactor
 import io.reactivex.Observable
+import javax.inject.Inject
+import javax.inject.Named
 
-class MainInteractor(
-    private val remoteRepository: Repository<List<SearchResult>>,
-    private val localRepository: Repository<List<SearchResult>>
-) : Interactor<DataModel> {
+class MainInteractor @Inject constructor(
+    @Named(NAME_REMOTE) val repositoryRemote: Repository<List<DataModel>>,
+    @Named(NAME_LOCAL) val repositoryLocal: Repository<List<DataModel>>
+) : Interactor<AppState> {
 
-    override fun getData(word: String, fromRemoteSource: Boolean): Observable<DataModel> {
-        return if (fromRemoteSource) {
-            remoteRepository.getData(word).map { list: List<SearchResult> ->
-                list.forEach {
-                    Log.d("RESULT", "${it.text} ~ " +
-                            "${it.meanings?.get(0)?.translation?.text} ~ " +
-                            "${it.meanings?.get(0)?.imageUrl}")
-                }
-                DataModel.Success(list)
-            }
+    override fun getData(word: String, fromRemoteSource: Boolean): Observable<AppState> =
+        if (fromRemoteSource) {
+            repositoryRemote
         } else {
-            localRepository.getData(word).map {
-                Log.d("RESULT", "${it[0].text}")
-                DataModel.Success(it) }
-        }
-    }
+            repositoryLocal
+        }.getData(word).map { AppState.Success(it) }
 }

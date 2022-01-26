@@ -7,6 +7,7 @@
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_delete_text.xml" value="0.1175925925925926" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_search.xml" value="0.1175925925925926" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_main_recyclerview_item.xml" value="0.1" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/recycler_item.xml" value="0.11955420466058764" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/search_dialog_fragment.xml" value="0.11955420466058764" />
       </map>
