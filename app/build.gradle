@@ -64,10 +64,25 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.38'
     kapt 'com.google.dagger:dagger-android-processor:2.38'
     kapt 'com.google.dagger:dagger-compiler:2.38'
+
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:1.0.0'
+
+    //Koin
+//Текущая версия библиотеки
+    def koin_version= "3.1.2"
+//Основная библиотека
+    implementation "io.insert-koin:koin-core:$koin_version"
+//Koin для поддержки Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:$koin_version"
+//Для совместимости с Java
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+
     //Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
 }
