@@ -1,15 +1,13 @@
-package com.example.translator.view.main
+package com.example.translator.view.history
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import com.example.translator.model.data.AppState
-import com.example.translator.utils.parseOnlineSearchResults
+import com.example.translator.utils.parseLocalSearchResults
 import com.example.translator.viewmodel.BaseViewModel
+import kotlinx.coroutines.launch
 
-
-class MainViewModel (private val interactor: MainInteractor) : BaseViewModel<AppState>() {
+class HistoryViewModel(private val interactor: HistoryInteractor) :
+    BaseViewModel<AppState>() {
 
     private val liveDataForViewToObserve: LiveData<AppState> = mutableLiveData
 
@@ -21,8 +19,8 @@ class MainViewModel (private val interactor: MainInteractor) : BaseViewModel<App
         viewModelCoroutineScope.launch { startInteractor(word, isOnline) }
     }
 
-    private suspend fun startInteractor(word: String, isOnline: Boolean) = withContext(Dispatchers.IO) {
-        mutableLiveData.postValue(parseOnlineSearchResults(interactor.getData(word, isOnline)))
+    private suspend fun startInteractor(word: String, isOnline: Boolean) {
+        mutableLiveData.postValue(parseLocalSearchResults(interactor.getData(word, isOnline)))
     }
 
     override fun handleError(error: Throwable) {

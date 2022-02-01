@@ -5,9 +5,16 @@
       <map>
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/bottom_sheet_dialog_background.xml" value="0.1175925925925926" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_delete_text.xml" value="0.1175925925925926" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_history.xml" value="0.1" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_load_error_vector.xml" value="0.1" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/drawable/ic_search.xml" value="0.1175925925925926" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_description.xml" value="0.12107396149949341" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_history.xml" value="0.12107396149949341" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_history_recycler_item.xml" value="0.12107396149949341" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/activity_main_recyclerview_item.xml" value="0.1" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/loading_layout.xml" value="0.12107396149949341" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/recycler_item.xml" value="0.11955420466058764" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/search_dialog_fragment.xml" value="0.11955420466058764" />
       </map>
