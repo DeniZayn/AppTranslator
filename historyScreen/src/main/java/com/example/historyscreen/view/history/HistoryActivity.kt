@@ -1,29 +1,24 @@
 package com.example.historyscreen.view.history
 
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import com.example.translator.R
+import com.example.core.BaseActivity
+import com.example.historyscreen.databinding.ActivityHistoryBinding
 import com.example.model.viewmodel.AppState
-import DataModel
-import com.example.core.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_history.*
+import com.example.model.viewmodel.userdata.DataModel
+import org.koin.android.scope.currentScope
 
 
-class HistoryActivity : BaseActivity<com.example.model.viewmodel.AppState, HistoryInteractor>() {
+class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
 
+    private lateinit var binding: ActivityHistoryBinding
     override lateinit var model: HistoryViewModel
-    private val adapter: HistoryAdapter by lazy { HistoryAdapter(onListItemClickListener) }
-    private val onListItemClickListener = object : HistoryAdapter.OnListItemClickListener {
-        override fun onItemClick(data: DataModel) {
-            Toast.makeText(this@HistoryActivity,
-                "on click: ${data.text}", Toast.LENGTH_SHORT).show()
-        }
-    }
+    private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_history)
+        binding = ActivityHistoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         iniViewModel()
         initViews()
     }
@@ -38,16 +33,15 @@ class HistoryActivity : BaseActivity<com.example.model.viewmodel.AppState, Histo
     }
 
     private fun iniViewModel() {
-        if (history_activity_recyclerview.adapter != null) {
+        if (binding.historyActivityRecyclerview.adapter != null) {
             throw IllegalStateException("The ViewModel should be initialised first")
         }
-        val viewModel: HistoryViewModel by viewModel()
+        val viewModel: HistoryViewModel by currentScope.inject()
         model = viewModel
-        model.subscribe().observe(this@HistoryActivity, Observer<com.example.model.viewmodel.AppState> { renderData(it) })
+        model.subscribe().observe(this@HistoryActivity, { renderData(it) })
     }
 
     private fun initViews() {
-        history_activity_recyclerview.adapter = adapter
+        binding.historyActivityRecyclerview.adapter = adapter
     }
-
 }

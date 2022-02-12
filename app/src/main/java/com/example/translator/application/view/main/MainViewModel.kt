@@ -1,35 +1,42 @@
 package com.example.translator.application.view.main
 
 import androidx.lifecycle.LiveData
+import com.example.core.viewmodel.BaseViewModel
+import com.example.model.viewmodel.AppState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import com.example.model.viewmodel.AppState
 import com.example.translator.utils.parseOnlineSearchResults
-import com.example.model.viewmodel.BaseViewModel
+import kotlinx.coroutines.launch
 
 
-class MainViewModel (private val interactor: MainInteractor) : BaseViewModel<com.example.model.viewmodel.AppState>() {
+class MainViewModel(private val interactor: MainInteractor) :
+    BaseViewModel<AppState>() {
 
-    private val liveDataForViewToObserve: LiveData<com.example.model.viewmodel.AppState> = mutableLiveData
+    private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData
 
-    fun subscribe(): LiveData<com.example.model.viewmodel.AppState> = liveDataForViewToObserve
+    fun subscribe(): LiveData<AppState> {
+        return liveDataForViewToObserve
+    }
 
     override fun getData(word: String, isOnline: Boolean) {
-        mutableLiveData.value = com.example.model.viewmodel.AppState.Loading(null)
+        _mutableLiveData.value = AppState.Loading(null)
         cancelJob()
         viewModelCoroutineScope.launch { startInteractor(word, isOnline) }
     }
 
-    private suspend fun startInteractor(word: String, isOnline: Boolean) = withContext(Dispatchers.IO) {
-        mutableLiveData.postValue(parseOnlineSearchResults(interactor.getData(word, isOnline)))
-    }
+    //Doesn't have to use withContext for Retrofit call if you use .addCallAdapterFactory(CoroutineCallAdapterFactory()). The same goes for Room
+    private suspend fun startInteractor(word: String, isOnline: Boolean) =
+        withContext(Dispatchers.IO) {
+            _mutableLiveData.postValue(parseOnlineSearchResults(interactor.getData(word, isOnline)))
+        }
 
     override fun handleError(error: Throwable) {
-        mutableLiveData.postValue(com.example.model.viewmodel.AppState.Error(error))
+        _mutableLiveData.postValue(AppState.Error(error))
     }
 
     override fun onCleared() {
-        mutableLiveData.value = com.example.model.viewmodel.AppState.Success(null)
+        _mutableLiveData.value =
+            AppState.Success(null)//TODO Workaround. Set View to original state
         super.onCleared()
     }
 }

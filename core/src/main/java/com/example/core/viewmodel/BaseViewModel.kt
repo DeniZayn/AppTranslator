@@ -1,12 +1,12 @@
-package com.example.core
+package com.example.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.model.viewmodel.AppState
 import kotlinx.coroutines.*
 
-
 abstract class BaseViewModel<T : AppState>(
-    protected open val mutableLiveData: MutableLiveData<T> = MutableLiveData()
+    protected open val _mutableLiveData: MutableLiveData<T> = MutableLiveData()
 ) : ViewModel() {
 
     protected val viewModelCoroutineScope = CoroutineScope(

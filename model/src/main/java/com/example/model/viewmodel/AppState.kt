@@ -1,6 +1,6 @@
 package com.example.model.viewmodel
 
-import DataModel
+import com.example.model.viewmodel.userdata.DataModel
 
 sealed class AppState {
     data class Success(val data: List<DataModel>?) : AppState()

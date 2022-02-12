@@ -17,6 +17,9 @@
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/loading_layout.xml" value="0.12107396149949341" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/recycler_item.xml" value="0.11955420466058764" />
         <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/app/src/main/res/layout/search_dialog_fragment.xml" value="0.11955420466058764" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/historyScreen/src/main/res/layout/activity_history.xml" value="0.11955420466058764" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/historyScreen/src/main/res/layout/activity_history_recyclerview_item.xml" value="0.11666666666666667" />
+        <entry key="..\:/Users/denis/AndroidStudioProjects/Translator/historyScreen/src/main/res/layout/loading_layout.xml" value="0.11666666666666667" />
       </map>
     </option>
   </component>

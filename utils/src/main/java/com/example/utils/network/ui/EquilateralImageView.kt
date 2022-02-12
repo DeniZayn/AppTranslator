@@ -1,4 +1,4 @@
-package com.example.utils.network
+package com.example.utils.network.ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -15,5 +15,4 @@ class EquilateralImageView : AppCompatImageView {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
     }
-
 }
