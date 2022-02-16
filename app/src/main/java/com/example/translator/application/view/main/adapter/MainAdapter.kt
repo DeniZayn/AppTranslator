@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.model.viewmodel.userdata.DataModel
 import com.example.translator.R
 import com.example.translator.utils.convertMeaningsToSingleString
-import kotlinx.android.synthetic.main.activity_main_recyclerview_item.view.*
 
 
 class MainAdapter(private var onListItemClickListener: OnListItemClickListener) :

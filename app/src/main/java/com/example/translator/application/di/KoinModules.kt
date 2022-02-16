@@ -9,6 +9,7 @@ import com.example.translator.application.view.main.MainInteractor
 import com.example.translator.application.view.main.MainViewModel
 import com.example.translator.application.view.main.MainActivity
 import com.example.repository.*
+import com.example.repository.repository.*
 import com.example.repository.repository.room.HistoryDataBase
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
